@@ -1,7 +1,10 @@
 module RenderJSON
-  %w[200 401].each do |status|
+  ALL_CODES = %w[200 401].freeze
+  SUCCESS_CODES = %w[200].freeze
+
+  ALL_CODES.each do |status|
     define_method "render_#{status}" do |data = nil|
-      render_oj_json(status.to_i, data)
+      render_oj_json(status, data)
     end
   end
 
@@ -22,10 +25,6 @@ module RenderJSON
   end
 
   def success_code?(status)
-    success_code.include?(status)
-  end
-
-  def success_code
-    [200]
+    SUCCESS_CODES.include?(status)
   end
 end
