@@ -1,4 +1,6 @@
 class Api::LoginController < ApplicationController
+  include RenderJSON
+
   def create
     user = User.find_by(email: params[:email])
     if user.try(:valid_password?, params[:password])
