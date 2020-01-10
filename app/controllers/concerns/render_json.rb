@@ -1,5 +1,5 @@
 module RenderJSON
-  %w[200 204 401 403 400 404 422 500].each do |status|
+  %w[200 401].each do |status|
     define_method "render_#{status}" do |data = nil|
       render_oj_json(status.to_i, data)
     end
@@ -26,6 +26,6 @@ module RenderJSON
   end
 
   def success_code
-    [200, 204]
+    %w[200]
   end
 end
