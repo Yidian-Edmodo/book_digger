@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LoginController, type: :controller do
+RSpec.describe Api::LoginController, type: :controller do
   describe 'Login #create' do
     before :each do
       @user = create(:user)

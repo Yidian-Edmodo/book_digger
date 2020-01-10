@@ -1,4 +1,4 @@
-class LoginController < ApplicationController
+class Api::LoginController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user.try(:valid_password?, params[:password])
