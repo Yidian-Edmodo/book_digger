@@ -9,22 +9,14 @@ module RenderJSON
   end
 
   def render_oj_json(status, data = {})
-    message, content = if error_code?(status)
-                         data.present? ? [data, {}] : ['error', {}]
-                       else
+    message, content = if SUCCESS_CODES.include?(status)
                          ['success', data]
+                       else
+                         [data, nil]
                        end
 
     meta = { code: status, message: message, data: content }
 
     render json: Oj.dump(meta, mode: :compat), status: status
-  end
-
-  def error_code?(status)
-    !success_code?(status)
-  end
-
-  def success_code?(status)
-    SUCCESS_CODES.include?(status)
   end
 end
