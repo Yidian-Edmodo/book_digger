@@ -26,6 +26,6 @@ module RenderJSON
   end
 
   def success_code
-    %w[200]
+    [200]
   end
 end
