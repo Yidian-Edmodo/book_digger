@@ -1,4 +1,4 @@
-module RenderJSON
+module RenderJson
   ALL_CODES = %w[200 401].freeze
   SUCCESS_CODES = %w[200].freeze
 
